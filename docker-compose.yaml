@@ -1,0 +1,48 @@
+services:
+  investigation-ddd-back:
+    container_name: investigation-ddd-back
+    restart: unless-stopped
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+    working_dir: /app
+    user: "1000:1000"
+    volumes:
+      - ./:/app
+    environment:
+      - APP_ENV=dev
+      - COMPOSER_ALLOW_SUPERUSER=1
+      - DEFAULT_URI=http://localhost
+    command: bash -lc "composer install --no-interaction --no-progress && php-fpm"
+
+  investigation-ddd-nginx:
+    container_name: investigation-ddd-nginx
+    restart: unless-stopped
+    image: nginx:1.29-alpine
+    depends_on:
+      - investigation-ddd-back
+    ports:
+      - "8101:80"
+    volumes:
+      - ./:/app:ro
+      - ./docker/nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
+
+  investigation-ddd-postgres:
+    container_name: investigation-ddd-postgres
+    restart: unless-stopped
+    image: postgres:17-alpine
+    environment:
+      POSTGRES_DB: app
+      POSTGRES_USER: app
+      POSTGRES_PASSWORD: app
+    ports:
+      - "8102:5432"
+    volumes:
+      - "./docker-tmp/postgres:/var/lib/postgresql/data:rw"
+
+  investigation-ddd-redis:
+    container_name: investigation-ddd-redis
+    restart: unless-stopped
+    image: redis:8-alpine
+    ports:
+      - "8103:5432"

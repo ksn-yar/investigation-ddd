@@ -1,0 +1,54 @@
+{
+  "name": "demo/investigation-ddd",
+  "description": "investigation ddd",
+  "type": "project",
+  "require": {
+    "php": ">=8.4",
+    "symfony/dotenv": "~7.3",
+    "symfony/flex": "~2.8",
+    "symfony/form": "~7.2",
+    "symfony/framework-bundle": "~7.3",
+    "symfony/runtime": "~7.3",
+    "symfony/twig-bundle": "~7.3",
+    "symfony/validator": "~7.3",
+    "symfony/yaml": "~7.3",
+    "twig/extra-bundle": "~3.21",
+    "twig/twig": "~3.21"
+  },
+  "require-dev": {
+    "roave/security-advisories": "dev-latest",
+    "phpunit/phpunit": "^12.3",
+    "phpstan/phpstan": "^2.1",
+    "phpstan/phpstan-symfony": "^2.0",
+    "friendsofphp/php-cs-fixer": "^3.87",
+    "deptrac/deptrac": "^4.2",
+    "symfony/browser-kit": "^7.2"
+  },
+  "autoload": {
+    "psr-4": {
+      "App\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "App\\Tests\\": "tests/"
+    }
+  },
+  "scripts": {
+    "test": "phpunit",
+    "stan": "phpstan analyse -c phpstan.neon.dist",
+    "cs:fix": "php-cs-fixer fix --config=.php-cs-fixer.dist.php --ansi",
+    "cs:check": "php-cs-fixer fix --dry-run --diff --config=.php-cs-fixer.dist.php --ansi",
+    "deptrac": "deptrac --config-file=deptrac.yaml",
+    "auto-scripts": {
+      "cache:clear": "symfony-cmd",
+      "assets:install %PUBLIC_DIR%": "symfony-cmd"
+    }
+  },
+  "config": {
+    "allow-plugins": {
+      "symfony/flex": true,
+      "symfony/runtime": true
+    }
+  }
+}
