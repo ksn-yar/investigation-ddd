@@ -12,8 +12,7 @@ final readonly class ScoutRepository implements ScoutRepositoryInterface
 {
     public function __construct(
         private InfrastructureScoutRepository $infrastructureScoutRepository,
-    ) {
-    }
+    ) {}
 
     public function findByIds(array $ids): array
     {
@@ -37,7 +36,7 @@ final readonly class ScoutRepository implements ScoutRepositoryInterface
     {
         // todo не уверен в правильности маппинга данных в этом месте
         $infrastructureScout = $this->infrastructureScoutRepository->find($id);
-        if ($infrastructureScout === null) {
+        if (null === $infrastructureScout) {
             return null;
         }
 
@@ -49,5 +48,33 @@ final readonly class ScoutRepository implements ScoutRepositoryInterface
             surname: $infrastructureScout->getSurname(),
             birthDate: $infrastructureScout->getBirthDate(),
         );
+    }
+
+    public function findAllByCriteria(?string $chapter, ?string $specialization): array
+    {
+        $criteria = [];
+        if ($chapter) {
+            $criteria['chapter'] = $chapter;
+        }
+        if ($specialization) {
+            $criteria['specialization'] = $specialization;
+        }
+
+        $result = [];
+
+        // todo не уверен в правильности маппинга данных в этом месте
+        $infrastructureScouts = $this->infrastructureScoutRepository->findBy($criteria);
+        foreach ($infrastructureScouts as $infrastructureScout) {
+            $result[] = ScoutEntity::create(
+                id: $infrastructureScout->getId(),
+                chapter: $infrastructureScout->getChapter(),
+                specialization: $infrastructureScout->getSpecialization(),
+                name: $infrastructureScout->getName(),
+                surname: $infrastructureScout->getSurname(),
+                birthDate: $infrastructureScout->getBirthDate(),
+            );
+        }
+
+        return $result;
     }
 }

@@ -17,7 +17,7 @@ trait EnumFromNameTrait
         }
 
         throw new ValueError(
-            sprintf("%s is not a valid backing value for enum %s.", $name, static::class)
+            \sprintf('%s is not a valid backing value for enum %s.', $name, static::class)
         );
     }
 }

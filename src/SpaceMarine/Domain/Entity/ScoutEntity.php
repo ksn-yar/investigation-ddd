@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\SpaceMarine\Domain\Entity;
 
 use App\SpaceMarine\Domain\Interfaces\ScoutManagerInterface;
-use App\SpaceMarine\Domain\ValueObject\BirthDateValueObject;
+use App\SpaceMarine\Domain\ValueObject\UnitBirthDateValueObject;
 use App\SpaceMarine\Domain\ValueObject\ScoutSpecializationValueObject;
 use App\SpaceMarine\Domain\ValueObject\UnitChapterValueObject;
 use App\SpaceMarine\Domain\ValueObject\UnitNameValueObject;
@@ -22,9 +22,8 @@ final class ScoutEntity
         private ScoutSpecializationValueObject $specialization,
         private UnitNameValueObject $name,
         private UnitSurnameValueObject $surname,
-        private BirthDateValueObject $birthDate,
-    ) {
-    }
+        private UnitBirthDateValueObject $birthDate,
+    ) {}
 
     public static function create(
         ?int $id,
@@ -33,14 +32,14 @@ final class ScoutEntity
         string $name,
         string $surname,
         DateTimeImmutable $birthDate,
-    ): ScoutEntity {
+    ): self {
         return new self(
             id: $id,
             chapter: new UnitChapterValueObject($chapter),
             specialization: new ScoutSpecializationValueObject($specialization),
             name: new UnitNameValueObject($name),
             surname: new UnitSurnameValueObject($surname),
-            birthDate: new BirthDateValueObject($birthDate),
+            birthDate: new UnitBirthDateValueObject($birthDate),
         );
     }
 
@@ -79,7 +78,7 @@ final class ScoutEntity
         return $this->surname;
     }
 
-    public function getBirthDate(): BirthDateValueObject
+    public function getBirthDate(): UnitBirthDateValueObject
     {
         return $this->birthDate;
     }
@@ -87,42 +86,49 @@ final class ScoutEntity
     public function setId(?int $id): self
     {
         $this->id = $id;
+
         return $this;
     }
 
     public function setChapter(string $chapter): self
     {
         $this->chapter = new UnitChapterValueObject($chapter);
+
         return $this;
     }
 
     public function setSpecialization(string $specialization): self
     {
         $this->specialization = new ScoutSpecializationValueObject($specialization);
+
         return $this;
     }
 
     public function setName(string $name): self
     {
         $this->name = new UnitNameValueObject($name);
+
         return $this;
     }
 
     public function setSurname(string $surname): self
     {
         $this->surname = new UnitSurnameValueObject($surname);
+
         return $this;
     }
 
     public function setBirthDate(DateTimeImmutable $birthDate): self
     {
-        $this->birthDate = new BirthDateValueObject($birthDate);
+        $this->birthDate = new UnitBirthDateValueObject($birthDate);
+
         return $this;
     }
 
     public function setScoutManager(ScoutManagerInterface $scoutManager): self
     {
         $this->scoutManager = $scoutManager;
+
         return $this;
     }
 }

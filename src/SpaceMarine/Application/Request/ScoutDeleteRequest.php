@@ -8,6 +8,5 @@ final readonly class ScoutDeleteRequest
 {
     public function __construct(
         public int $id,
-    ) {
-    }
+    ) {}
 }

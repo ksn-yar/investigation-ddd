@@ -16,15 +16,14 @@ final readonly class ScoutManager implements ScoutManagerInterface
     public function __construct(
         private InfrastructureScoutManager $infrastructureScoutManager,
         private InfrastructureScoutRepository $infrastructureScoutRepository,
-    ) {
-    }
+    ) {}
 
     public function save(ScoutEntity $scoutEntity): void
     {
-        if ($scoutEntity->getId() !== null) {
+        if (null !== $scoutEntity->getId()) {
             $infrastructureScout = $this->infrastructureScoutRepository->find($scoutEntity->getId());
 
-            if ($infrastructureScout === null) {
+            if (null === $infrastructureScout) {
                 throw new EntityNotFoundException();
             }
 
@@ -36,7 +35,7 @@ final readonly class ScoutManager implements ScoutManagerInterface
                 ->setBirthDate($scoutEntity->getBirthDate()->getValue())
             ;
         } else {
-            $infrastructureScout = (new Scout)
+            $infrastructureScout = new Scout()
                 ->setChapter($scoutEntity->getChapter()->getValue()->value)
                 ->setName($scoutEntity->getName()->getValue())
                 ->setSurname($scoutEntity->getSurname()->getValue())
@@ -57,7 +56,7 @@ final readonly class ScoutManager implements ScoutManagerInterface
     {
         $infrastructureScout = $this->infrastructureScoutRepository->find($scoutEntity->getId());
 
-        if ($infrastructureScout === null) {
+        if (null === $infrastructureScout) {
             throw new EntityNotFoundException();
         }
 

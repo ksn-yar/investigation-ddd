@@ -16,7 +16,7 @@ class ScoutCreatePresenter implements ScoutCreatePresenterInterface
     {
         $this->scoutCreateModelView = new ScoutCreateModelView(
             $scoutEntity->getId(),
-            sprintf('%s %s', $scoutEntity->getName(), $scoutEntity->getSurname()),
+            \sprintf('%s %s', $scoutEntity->getName(), $scoutEntity->getSurname()),
         );
     }
 

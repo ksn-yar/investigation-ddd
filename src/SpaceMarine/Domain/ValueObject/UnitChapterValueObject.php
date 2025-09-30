@@ -15,13 +15,13 @@ final readonly class UnitChapterValueObject implements ValueObjectInterface
         $this->value = ChapterEnum::from($value);
     }
 
-    public function getValue(): ChapterEnum
-    {
-        return $this->value;
-    }
-
     public function __toString(): string
     {
         return $this->value->value;
+    }
+
+    public function getValue(): ChapterEnum
+    {
+        return $this->value;
     }
 }

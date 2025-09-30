@@ -8,6 +8,5 @@ final readonly class ScoutDeleteModelView
 {
     public function __construct(
         public int $id,
-    ) {
-    }
+    ) {}
 }

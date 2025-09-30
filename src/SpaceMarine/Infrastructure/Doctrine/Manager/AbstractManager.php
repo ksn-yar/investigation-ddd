@@ -10,7 +10,5 @@ abstract class AbstractManager
 {
     public function __construct(
         protected readonly EntityManagerInterface $entityManager,
-    )
-    {
-    }
+    ) {}
 }

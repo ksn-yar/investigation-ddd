@@ -9,7 +9,8 @@ return static function (ContainerConfigurator $containerConfigurator): void {
 
     $services->defaults()
         ->autowire()
-        ->autoconfigure();
+        ->autoconfigure()
+    ;
 
     $services->load('App\\', __DIR__ . '/../src/');
 };

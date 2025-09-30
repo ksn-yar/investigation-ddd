@@ -14,6 +14,5 @@ final readonly class ScoutCreateRequest
         public string $name,
         public string $surname,
         public DateTimeImmutable $birthDate,
-    ) {
-    }
+    ) {}
 }

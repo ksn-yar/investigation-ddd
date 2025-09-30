@@ -23,18 +23,18 @@ final readonly class MarineSpecializationValueObject implements ValueObjectInter
     {
         $this->value = UnitSpecializationEnum::fromName($value);
 
-        if (in_array($this->value, self::ALLOW_SPECIALIZATIONS, true) === false) {
+        if (false === \in_array($this->value, self::ALLOW_SPECIALIZATIONS, true)) {
             throw new InvalidArgumentException('Value must be one of: ' . implode(', ', self::ALLOW_SPECIALIZATIONS));
         }
-    }
-
-    public function getValue(): UnitSpecializationEnum
-    {
-        return $this->value;
     }
 
     public function __toString(): string
     {
         return $this->value->value;
+    }
+
+    public function getValue(): UnitSpecializationEnum
+    {
+        return $this->value;
     }
 }

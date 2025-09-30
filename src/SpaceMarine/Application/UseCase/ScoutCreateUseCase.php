@@ -13,8 +13,7 @@ final readonly class ScoutCreateUseCase
 {
     public function __construct(
         private ScoutManagerInterface $scoutManager,
-    ) {
-    }
+    ) {}
 
     public function execute(
         ScoutCreateRequest $request,

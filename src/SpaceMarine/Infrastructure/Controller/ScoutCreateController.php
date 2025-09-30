@@ -20,8 +20,7 @@ final class ScoutCreateController extends AbstractController
     public function __construct(
         private readonly ScoutCreateUseCase $scoutCreateUseCase,
         private readonly ScoutCreatePresenterInterface $scoutCreatePresenter,
-    ) {
-    }
+    ) {}
 
     /**
      * @throws DateMalformedStringException
@@ -29,6 +28,7 @@ final class ScoutCreateController extends AbstractController
     public function __invoke(Request $request): JsonResponse
     {
         $this->scoutCreateUseCase->execute($this->akaParamConverter($request), $this->scoutCreatePresenter);
+
         return new JsonResponse($this->scoutCreatePresenter->present());
     }
 

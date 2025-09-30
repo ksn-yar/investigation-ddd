@@ -9,6 +9,5 @@ final readonly class ScoutCreateModelView
     public function __construct(
         public int $id,
         public string $fullName,
-    ) {
-    }
+    ) {}
 }

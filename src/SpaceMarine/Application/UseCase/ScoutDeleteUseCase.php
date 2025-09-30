@@ -6,7 +6,6 @@ namespace App\SpaceMarine\Application\UseCase;
 
 use App\SpaceMarine\Application\Exception\EntityNotFoundException;
 use App\SpaceMarine\Application\Interfaces\ScoutDeletePresenterInterface;
-use App\SpaceMarine\Application\ModelView\ScoutDeleteModelView;
 use App\SpaceMarine\Application\Request\ScoutDeleteRequest;
 use App\SpaceMarine\Domain\Interfaces\ScoutManagerInterface;
 use App\SpaceMarine\Domain\Interfaces\ScoutRepositoryInterface;
@@ -16,8 +15,7 @@ final readonly class ScoutDeleteUseCase
     public function __construct(
         private ScoutManagerInterface $scoutManager,
         private ScoutRepositoryInterface $scoutRepository,
-    ) {
-    }
+    ) {}
 
     /**
      * @throws EntityNotFoundException
@@ -28,7 +26,7 @@ final readonly class ScoutDeleteUseCase
     ): void {
         $scoutEntity = $this->scoutRepository->findOneById($request->id);
 
-        if ($scoutEntity === null) {
+        if (null === $scoutEntity) {
             throw new EntityNotFoundException();
         }
 

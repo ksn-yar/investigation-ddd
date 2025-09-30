@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\SpaceMarine\Infrastructure\Doctrine\Entity;
 
 use App\SpaceMarine\Infrastructure\Doctrine\Repository\ScoutRepository;
@@ -42,6 +44,7 @@ final class Scout
     public function setChapter(string $chapter): self
     {
         $this->chapter = $chapter;
+
         return $this;
     }
 
@@ -53,6 +56,7 @@ final class Scout
     public function setSpecialization(string $specialization): self
     {
         $this->specialization = $specialization;
+
         return $this;
     }
 
@@ -64,6 +68,7 @@ final class Scout
     public function setName(string $name): self
     {
         $this->name = $name;
+
         return $this;
     }
 
@@ -75,6 +80,7 @@ final class Scout
     public function setSurname(string $surname): self
     {
         $this->surname = $surname;
+
         return $this;
     }
 
@@ -86,6 +92,7 @@ final class Scout
     public function setBirthDate(DateTimeImmutable $birthDate): self
     {
         $this->birthDate = $birthDate;
+
         return $this;
     }
 }

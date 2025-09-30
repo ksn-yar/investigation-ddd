@@ -5,10 +5,9 @@ declare(strict_types=1);
 namespace App\SpaceMarine\Infrastructure\Controller;
 
 use App\SpaceMarine\Application\Exception\EntityNotFoundException;
+use App\SpaceMarine\Application\Interfaces\ScoutDeletePresenterInterface;
 use App\SpaceMarine\Application\Request\ScoutDeleteRequest;
 use App\SpaceMarine\Application\UseCase\ScoutDeleteUseCase;
-use App\SpaceMarine\Presentation\ScoutDeletePresenter;
-use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -19,9 +18,8 @@ final class ScoutDeleteController extends AbstractController
 {
     public function __construct(
         private readonly ScoutDeleteUseCase $scoutDeleteUseCase,
-        private readonly ScoutDeletePresenter $scoutDeletePresenter,
-    ) {
-    }
+        private readonly ScoutDeletePresenterInterface $scoutDeletePresenter,
+    ) {}
 
     /**
      * @throws EntityNotFoundException
@@ -29,6 +27,7 @@ final class ScoutDeleteController extends AbstractController
     public function __invoke(Request $request): JsonResponse
     {
         $this->scoutDeleteUseCase->execute($this->akaParamConverter($request), $this->scoutDeletePresenter);
+
         return new JsonResponse($this->scoutDeletePresenter->present());
     }
 
