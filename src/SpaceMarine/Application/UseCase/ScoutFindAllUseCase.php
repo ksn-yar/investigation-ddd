@@ -12,8 +12,7 @@ final readonly class ScoutFindAllUseCase
 {
     public function __construct(
         private ScoutRepositoryInterface $scoutRepository,
-    ) {
-    }
+    ) {}
 
     public function execute(
         ScoutFindAllRequest $findAllRequest,

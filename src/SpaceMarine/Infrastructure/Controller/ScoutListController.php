@@ -18,9 +18,7 @@ final class ScoutListController extends AbstractController
     public function __construct(
         private readonly ScoutFindAllUseCase $scoutFindAllUseCase,
         private readonly ScoutFindAllPresenterInterface $scoutFindAllPresenter,
-    )
-    {
-    }
+    ) {}
 
     public function __invoke(Request $request): JsonResponse
     {

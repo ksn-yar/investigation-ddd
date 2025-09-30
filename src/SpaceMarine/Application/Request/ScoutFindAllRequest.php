@@ -9,6 +9,5 @@ final readonly class ScoutFindAllRequest
     public function __construct(
         public ?string $chapter,
         public ?string $specialization,
-    ) {
-    }
+    ) {}
 }

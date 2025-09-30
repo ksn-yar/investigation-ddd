@@ -9,6 +9,5 @@ final readonly class ScoutFindAllModelView
     public function __construct(
         // todo заменить на коллекцию классов, для первой демонстрации сойдет и так
         private array $data,
-    ) {
-    }
+    ) {}
 }

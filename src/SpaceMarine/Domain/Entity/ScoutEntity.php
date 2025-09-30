@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace App\SpaceMarine\Domain\Entity;
 
 use App\SpaceMarine\Domain\Interfaces\ScoutManagerInterface;
-use App\SpaceMarine\Domain\ValueObject\UnitBirthDateValueObject;
 use App\SpaceMarine\Domain\ValueObject\ScoutSpecializationValueObject;
+use App\SpaceMarine\Domain\ValueObject\UnitBirthDateValueObject;
 use App\SpaceMarine\Domain\ValueObject\UnitChapterValueObject;
 use App\SpaceMarine\Domain\ValueObject\UnitNameValueObject;
 use App\SpaceMarine\Domain\ValueObject\UnitSurnameValueObject;

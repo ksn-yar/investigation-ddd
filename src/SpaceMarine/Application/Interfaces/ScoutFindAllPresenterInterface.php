@@ -11,7 +11,6 @@ interface ScoutFindAllPresenterInterface
 {
     /**
      * @param ScoutEntity[] $scoutEntities
-     * @return void
      */
     public function set(array $scoutEntities): void;
 
